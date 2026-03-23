@@ -1,0 +1,189 @@
+[gd_scene load_steps=15 format=3 uid="uid://sdjd86x0bxbi"]
+
+[ext_resource type="PackedScene" uid="uid://bxoq2i6sgqout" path="res://Scenes/animated texture robot_static.tscn" id="1_d4utu"]
+[ext_resource type="Script" path="res://current_id.gd" id="1_j0o15"]
+[ext_resource type="PackedScene" uid="uid://76ww4ubj4whv" path="res://camera_with_data.tscn" id="2_an5so"]
+[ext_resource type="PackedScene" uid="uid://d38eeelt7s53" path="res://cam_pose.tscn" id="3_rvq0r"]
+[ext_resource type="Theme" uid="uid://hs3fhkbwsew2" path="res://back_panel_theme.tres" id="4_e4yqk"]
+[ext_resource type="FontFile" uid="uid://c6n1l1sesq1u5" path="res://fONTS/Alien-Encounters-Solid-Italic.ttf" id="4_vunvx"]
+[ext_resource type="FontFile" uid="uid://bul0mvjh7w41x" path="res://fONTS/Alien-Encounters-Solid-Bold-Italic.ttf" id="6_qxyhi"]
+[ext_resource type="FontFile" uid="uid://dgdx2y75tp4eb" path="res://fONTS/Alien-Encounters-Solid-Regular.ttf" id="7_u8bsx"]
+[ext_resource type="Script" path="res://margin_container.gd" id="7_ueivs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y1xdi"]
+
+[sub_resource type="Sky" id="Sky_8os1v"]
+sky_material = SubResource("ProceduralSkyMaterial_y1xdi")
+
+[sub_resource type="Environment" id="Environment_v8ubl"]
+background_mode = 2
+sky = SubResource("Sky_8os1v")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7jpy"]
+draw_center = false
+border_width_left = 6
+border_width_top = 3
+border_width_right = 6
+border_width_bottom = 3
+border_color = Color(0, 0.183333, 1, 1)
+
+[sub_resource type="Theme" id="Theme_x30e8"]
+Panel/styles/panel = SubResource("StyleBoxFlat_e7jpy")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 480)
+size_2d_override = Vector2i(680, 480)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_v8ubl")
+
+[node name="Model" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="animated texture robot" parent="SubViewportContainer/SubViewport/Model" instance=ExtResource("1_d4utu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.604729)
+
+[node name="Cam_rig" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" parent="SubViewportContainer/SubViewport/Cam_rig" node_paths=PackedStringArray("pose_array") instance=ExtResource("2_an5so")]
+current = true
+move_speed = 0.08
+fov_speed = 0.15
+pose_array = [NodePath("../Cam_pose"), NodePath("../Cam_pose2"), NodePath("../Cam_pose1"), NodePath("../Cam_pose3")]
+
+[node name="Cam_pose" parent="SubViewportContainer/SubViewport/Cam_rig" instance=ExtResource("3_rvq0r")]
+transform = Transform3D(0.728347, -0.320851, 0.605446, -3.63523e-09, 0.883594, 0.468254, -0.685208, -0.341051, 0.643563, 7.25966, 13.6178, 11.1526)
+set_fov = 40.0
+pose_id = "head"
+
+[node name="Cam_pose2" parent="SubViewportContainer/SubViewport/Cam_rig" instance=ExtResource("3_rvq0r")]
+transform = Transform3D(0.711204, 0, 0.702985, 0, 1, 0, -0.702985, 0, 0.711204, 3.95382, 4.32106, 8.81566)
+pose_id = "body"
+
+[node name="Cam_pose1" parent="SubViewportContainer/SubViewport/Cam_rig" instance=ExtResource("3_rvq0r")]
+transform = Transform3D(0.711204, 0, 0.702985, 0, 1, 0, -0.702985, 0, 0.711204, 4.16011, 5.29079, 10.548)
+pose_id = "arms"
+
+[node name="Cam_pose3" parent="SubViewportContainer/SubViewport/Cam_rig" instance=ExtResource("3_rvq0r")]
+transform = Transform3D(0.999983, 0, -0.00581199, 0, 1, 0, 0.0058119, 0, 0.999983, -1.92343, 3.40886, 10.7842)
+set_fov = 60.0
+pose_id = "legs"
+
+[node name="menu2d" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="panel_options" type="Panel" parent="menu2d"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 222.0
+offset_bottom = 463.0
+theme = ExtResource("4_e4yqk")
+
+[node name="label_garage" type="Label" parent="menu2d/panel_options"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 80.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("6_qxyhi")
+theme_override_font_sizes/font_size = 41
+text = "garage"
+
+[node name="label_head" type="Label" parent="menu2d/panel_options"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 144.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("7_u8bsx")
+theme_override_font_sizes/font_size = 24
+text = "head"
+
+[node name="label_body" type="Label" parent="menu2d/panel_options"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 168.0
+offset_right = 200.0
+offset_bottom = 232.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("7_u8bsx")
+theme_override_font_sizes/font_size = 24
+text = "body"
+
+[node name="label_arms" type="Label" parent="menu2d/panel_options"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 264.0
+offset_right = 200.0
+offset_bottom = 328.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("7_u8bsx")
+theme_override_font_sizes/font_size = 24
+text = "arms"
+
+[node name="label_legs" type="Label" parent="menu2d/panel_options"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 360.0
+offset_right = 200.0
+offset_bottom = 424.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.435294)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("7_u8bsx")
+theme_override_font_sizes/font_size = 24
+text = "legs"
+
+[node name="MarginContainer" type="Panel" parent="menu2d/panel_options" node_paths=PackedStringArray("label_array")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -136.0
+offset_top = -32.0
+offset_right = 79.0
+offset_bottom = 38.0
+theme = SubResource("Theme_x30e8")
+script = ExtResource("7_ueivs")
+label_array = [NodePath("../label_head"), NodePath("../label_body"), NodePath("../label_arms"), NodePath("../label_legs")]
+
+[node name="current_id" type="Label" parent="menu2d/panel_options"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 448.0
+offset_right = 503.0
+offset_bottom = 484.0
+scale = Vector2(1.05976, 0.947359)
+theme_override_fonts/font = ExtResource("4_vunvx")
+theme_override_font_sizes/font_size = 32
+text = "part"
+script = ExtResource("1_j0o15")

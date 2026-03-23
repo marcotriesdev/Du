@@ -1,0 +1,258 @@
+[gd_scene load_steps=35 format=3 uid="uid://blchp2nr2wwwd"]
+
+[ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="1_hd2ia"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="1_qto38"]
+[ext_resource type="Texture2D" uid="uid://tog3mfsfkygx" path="res://pcb_texture.png" id="1_tsqth"]
+[ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="2_20ab7"]
+[ext_resource type="Texture2D" uid="uid://d18ilqqrp36tx" path="res://pcb_normals.png" id="2_j3lf7"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="3_5ce62"]
+[ext_resource type="PackedScene" uid="uid://cb7qssd0jjgje" path="res://Scenes/hud.tscn" id="3_cvsud"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="4_ogys4"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="5_hn6m6"]
+[ext_resource type="PackedScene" uid="uid://bo7qgxnv782m1" path="res://Models/tank DU.tscn" id="6_dbdal"]
+[ext_resource type="Resource" uid="uid://cp5pmuoa15e5g" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_blur_stage.tres" id="6_gqod8"]
+[ext_resource type="PackedScene" uid="uid://dorsu4ti6rmu5" path="res://arena01.tscn" id="7_dwlux"]
+[ext_resource type="Resource" uid="uid://bk8tn7n5k0b1r" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_neighbor_max_stage.tres" id="7_ova8i"]
+[ext_resource type="Resource" uid="uid://chg1vh0sap86j" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_overlay_stage.tres" id="8_hbeal"]
+[ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_motion_blur.gd" id="9_a2vts"]
+[ext_resource type="Resource" uid="uid://kgrk5sdoor7t" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_tile_max_x_stage.tres" id="10_80vuh"]
+[ext_resource type="Resource" uid="uid://d2rdmkpi41wf1" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_tile_max_y_stage.tres" id="11_3t5b1"]
+[ext_resource type="Resource" uid="uid://d1ckx52l74p0" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_tile_variance_stage.tres" id="12_8q06w"]
+[ext_resource type="PackedScene" uid="uid://dri2hn746a82m" path="res://player_rig.tscn" id="14_hb01k"]
+[ext_resource type="Shader" path="res://radial_blur2.gdshader" id="15_y2ohr"]
+[ext_resource type="Shader" uid="uid://cluur2lgv82je" path="res://lens_shader.tres" id="16_dsoe0"]
+[ext_resource type="Shader" path="res://radial_blur.gdshader" id="16_scy8a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3651x"]
+
+[sub_resource type="Sky" id="Sky_yosjp"]
+sky_material = SubResource("ProceduralSkyMaterial_3651x")
+
+[sub_resource type="Environment" id="Environment_tyrjj"]
+background_mode = 2
+background_energy_multiplier = 0.63
+sky = SubResource("Sky_yosjp")
+sky_rotation = Vector3(0, 6.05804, 0)
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.79
+ssao_intensity = 16.0
+ssao_power = 8.19619
+ssao_detail = 0.66
+ssao_horizon = 0.39
+ssao_sharpness = 0.76
+ssao_light_affect = 0.99
+ssao_ao_channel_affect = 1.0
+glow_enabled = true
+glow_intensity = 4.22
+glow_bloom = 0.38
+glow_hdr_luminance_cap = 60.84
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.85, 0.9075, 1, 1)
+fog_light_energy = 2.05
+fog_sun_scatter = 0.08
+fog_density = 1.0
+fog_depth_curve = 2.82843
+fog_depth_begin = 194.2
+fog_depth_end = 499.6
+volumetric_fog_density = 0.0263
+volumetric_fog_emission = Color(0.737193, 0.737193, 0.737193, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_anisotropy = 0.05
+volumetric_fog_length = 0.01
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_ambient_inject = 4.71
+volumetric_fog_temporal_reprojection_amount = 0.763
+adjustment_enabled = true
+adjustment_brightness = 1.21
+adjustment_contrast = 1.11
+adjustment_saturation = 2.37
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_82s33"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("5_hn6m6")
+pre_blur_processor_stage = ExtResource("4_ogys4")
+camera_rotation_component = ExtResource("2_20ab7")
+camera_movement_component = ExtResource("1_hd2ia")
+object_movement_component = ExtResource("3_5ce62")
+debug = false
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_woarx"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("9_a2vts")
+blur_stage = ExtResource("6_gqod8")
+overlay_stage = ExtResource("8_hbeal")
+tile_max_x_stage = ExtResource("10_80vuh")
+tile_max_y_stage = ExtResource("11_3t5b1")
+neighbor_max_stage = ExtResource("7_ova8i")
+tile_variance_stage = ExtResource("12_8q06w")
+tile_size = 40
+debug = false
+
+[sub_resource type="Compositor" id="Compositor_x40jr"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_82s33"), SubResource("CompositorEffect_woarx")])
+script = ExtResource("1_qto38")
+samples = 64
+intensity = 1.0
+center_fade = 0.434
+framerate_independent = true
+uncapped_independence = true
+target_constant_framerate = 70.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjjrt"]
+resource_local_to_scene = true
+shader = ExtResource("16_scy8a")
+shader_parameter/intensity = 0.9
+shader_parameter/falloff = 0.5
+shader_parameter/samples = 11
+shader_parameter/center = Vector2(2.215, 2.775)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssmsa"]
+resource_local_to_scene = true
+shader = ExtResource("15_y2ohr")
+shader_parameter/intensity = 1.0
+shader_parameter/falloff = 0.7
+shader_parameter/samples = 4
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8ict"]
+resource_local_to_scene = true
+shader = ExtResource("16_dsoe0")
+shader_parameter/Blur = 3.33
+shader_parameter/FlareThreshold = 12.39
+shader_parameter/Thresholdsmoothness = 11.47
+shader_parameter/Flares = 5
+shader_parameter/FlareSpacing = 0.12
+shader_parameter/FlareDistance = 0.325
+shader_parameter/LensThickness = 10.435
+shader_parameter/Intensity = 17.955
+shader_parameter/Saturation_ = 21.28
+shader_parameter/visibility = 2.0
+shader_parameter/MinFlareIntensity = 0.0
+shader_parameter/MaxFlareIntensity = 1.0
+shader_parameter/RainbowIntensity = 2.995
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f8kjy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynh6s"]
+albedo_texture = ExtResource("1_tsqth")
+roughness_texture = ExtResource("1_tsqth")
+normal_enabled = true
+normal_scale = 13.94
+normal_texture = ExtResource("2_j3lf7")
+uv1_scale = Vector3(4.64, 4.64, 4.64)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_01r8p"]
+points = PackedVector3Array(-0.5, -1, 0, -0.497651, -1, -0.0490407, -0.497651, -1, 0.0489429, -0.5, 1, 0, -0.490407, -1, -0.097592, -0.497651, 1, -0.0490407, -0.490407, -1, 0.0974941, -0.497651, 1, 0.0489429, -0.478563, -1, -0.145164, -0.490407, 1, -0.097592, -0.478563, -1, 0.145067, -0.490407, 1, 0.0974941, -0.46202, -1, -0.191366, -0.478563, 1, -0.145164, -0.46202, -1, 0.191269, -0.478563, 1, 0.145067, -0.440975, -1, -0.235709, -0.46202, 1, -0.191366, -0.440975, -1, 0.235611, -0.46202, 1, 0.191269, -0.415818, -1, -0.2778, -0.440975, 1, -0.235709, -0.415818, -1, 0.277702, -0.440975, 1, 0.235611, -0.386551, -1, -0.317247, -0.415818, 1, -0.2778, -0.386551, -1, 0.31715, -0.415818, 1, 0.277702, -0.353563, -1, -0.353563, -0.386551, 1, -0.317247, -0.353563, -1, 0.353465, -0.386551, 1, 0.31715, -0.317247, -1, -0.386551, -0.353563, 1, -0.353563, -0.317247, -1, 0.386453, -0.353563, 1, 0.353465, -0.2778, -1, -0.415818, -0.317247, 1, -0.386551, -0.2778, -1, 0.41572, -0.317247, 1, 0.386453, -0.235709, -1, -0.440975, -0.2778, 1, -0.415818, -0.235709, -1, 0.440877, -0.2778, 1, 0.41572, -0.191366, -1, -0.46202, -0.235709, 1, -0.440975, -0.191366, -1, 0.461922, -0.235709, 1, 0.440877, -0.145164, -1, -0.478563, -0.191366, 1, -0.46202, -0.145164, -1, 0.478465, -0.191366, 1, 0.461922, -0.097592, -1, -0.490407, -0.145164, 1, -0.478563, -0.097592, -1, 0.490309, -0.145164, 1, 0.478465, -0.0490407, -1, -0.497651, -0.097592, 1, -0.490407, -0.0490407, -1, 0.497553, -0.097592, 1, 0.490309, 0, -1, -0.5, -0.0490407, 1, -0.497651, 0, -1, 0.5, -0.0490407, 1, 0.497553, 0.0489429, -1, -0.497651, 0, 1, -0.5, 0.0489429, -1, 0.497553, 0, 1, 0.5, 0.0974941, -1, -0.490407, 0.0489429, 1, -0.497651, 0.0974941, -1, 0.490309, 0.0489429, 1, 0.497553, 0.145067, -1, -0.478563, 0.0974941, 1, -0.490407, 0.145067, -1, 0.478465, 0.0974941, 1, 0.490309, 0.191269, -1, -0.46202, 0.145067, 1, -0.478563, 0.191269, -1, 0.461922, 0.145067, 1, 0.478465, 0.235611, -1, -0.440975, 0.191269, 1, -0.46202, 0.235611, -1, 0.440877, 0.191269, 1, 0.461922, 0.277702, -1, -0.415818, 0.235611, 1, -0.440975, 0.277702, -1, 0.41572, 0.235611, 1, 0.440877, 0.31715, -1, -0.386551, 0.277702, 1, -0.415818, 0.31715, -1, 0.386453, 0.277702, 1, 0.41572, 0.353465, -1, -0.353563, 0.31715, 1, -0.386551, 0.353465, -1, 0.353465, 0.31715, 1, 0.386453, 0.386453, -1, -0.317247, 0.353465, 1, -0.353563, 0.386453, -1, 0.31715, 0.353465, 1, 0.353465, 0.41572, -1, -0.2778, 0.386453, 1, -0.317247, 0.41572, -1, 0.277702, 0.386453, 1, 0.31715, 0.440877, -1, -0.235709, 0.41572, 1, -0.2778, 0.440877, -1, 0.235611, 0.41572, 1, 0.277702, 0.461922, -1, -0.191366, 0.440877, 1, -0.235709, 0.461922, -1, 0.191269, 0.440877, 1, 0.235611, 0.478465, -1, -0.145164, 0.461922, 1, -0.191366, 0.478465, -1, 0.145067, 0.461922, 1, 0.191269, 0.490309, -1, -0.097592, 0.478465, 1, -0.145164, 0.490309, -1, 0.0974941, 0.478465, 1, 0.145067, 0.497553, -1, -0.0490407, 0.490309, 1, -0.097592, 0.497553, -1, 0.0489429, 0.490309, 1, 0.0974941, 0.5, -1, 0, 0.497553, 1, -0.0490407, 0.497553, 1, 0.0489429, 0.5, 1, 0)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tyrjj")
+compositor = SubResource("Compositor_x40jr")
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 28.9105, 57.1979)
+shadow_enabled = true
+shadow_opacity = 0.64
+sky_mode = 1
+
+[node name="player_rig" parent="." instance=ExtResource("14_hb01k")]
+
+[node name="radial_blur" parent="player_rig/animated texture robot/CanvasLayer2" index="0"]
+material = SubResource("ShaderMaterial_jjjrt")
+
+[node name="radial_blur2" parent="player_rig/animated texture robot/CanvasLayer3" index="0"]
+material = SubResource("ShaderMaterial_ssmsa")
+
+[node name="lens_flare" parent="player_rig/Cam1/CanvasLayer" index="0"]
+material = SubResource("ShaderMaterial_w8ict")
+
+[node name="HUD" parent="." instance=ExtResource("3_cvsud")]
+position = Vector2(0, 1)
+
+[node name="tank DU" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6644, 2.92096, -14.8516)
+
+[node name="tank DU3" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6644, 10.5286, -14.8516)
+
+[node name="tank DU5" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6644, 2.92096, -14.8516)
+
+[node name="tank DU7" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6644, 10.5286, -2.85162)
+
+[node name="tank DU9" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.6644, 2.92096, -2.85162)
+
+[node name="tank DU11" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6644, 10.5286, 10.1484)
+
+[node name="tank DU13" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6644, 2.92096, 10.1484)
+
+[node name="tank DU15" parent="." instance=ExtResource("6_dbdal")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6644, 10.5286, 10.1484)
+
+[node name="Arena" parent="." instance=ExtResource("7_dwlux")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -23.5664, 58.311)
+
+[node name="TestFloor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.119, -7.83323, 0)
+
+[node name="Piso2" type="StaticBody3D" parent="TestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.949974, 0)
+
+[node name="Piso" type="MeshInstance3D" parent="TestFloor/Piso2"]
+transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
+mesh = SubResource("CylinderMesh_f8kjy")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ynh6s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloor/Piso2"]
+transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
+shape = SubResource("ConvexPolygonShape3D_01r8p")
+
+[node name="Piso3" type="StaticBody3D" parent="TestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3842, 2.82257, 0)
+
+[node name="Piso" type="MeshInstance3D" parent="TestFloor/Piso3"]
+transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
+mesh = SubResource("CylinderMesh_f8kjy")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ynh6s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloor/Piso3"]
+transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
+shape = SubResource("ConvexPolygonShape3D_01r8p")
+
+[node name="Piso4" type="StaticBody3D" parent="TestFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 136.178, 6.43648, 0)
+
+[node name="Piso" type="MeshInstance3D" parent="TestFloor/Piso4"]
+transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
+mesh = SubResource("CylinderMesh_f8kjy")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ynh6s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloor/Piso4"]
+transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
+shape = SubResource("ConvexPolygonShape3D_01r8p")
+
+[editable path="player_rig"]
+[editable path="Arena"]

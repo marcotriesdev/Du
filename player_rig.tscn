@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://dri2hn746a82m"]
+
+[ext_resource type="PackedScene" uid="uid://d4nxgcpbsjfxl" path="res://Scenes/animated texture robot.tscn" id="1_3ehau"]
+[ext_resource type="Script" path="res://Scenes/cam_1.gd" id="2_cy2ym"]
+[ext_resource type="Shader" path="res://radial_blur2.gdshader" id="2_erbgs"]
+[ext_resource type="Shader" uid="uid://cluur2lgv82je" path="res://lens_shader.tres" id="3_4w1mk"]
+[ext_resource type="Shader" path="res://radial_blur.gdshader" id="4_oe3sn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2hps"]
+resource_local_to_scene = true
+shader = ExtResource("4_oe3sn")
+shader_parameter/intensity = 0.9
+shader_parameter/falloff = 1.0
+shader_parameter/samples = 1
+shader_parameter/center = Vector2(21.1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qfqw"]
+resource_local_to_scene = true
+shader = ExtResource("2_erbgs")
+shader_parameter/intensity = 1.0
+shader_parameter/falloff = 0.7
+shader_parameter/samples = 4
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uatld"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 65.59
+dof_blur_far_transition = 220.61
+dof_blur_near_enabled = true
+dof_blur_near_distance = 2.86
+dof_blur_amount = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71oc6"]
+resource_local_to_scene = true
+shader = ExtResource("3_4w1mk")
+shader_parameter/Blur = 3.33
+shader_parameter/FlareThreshold = 12.39
+shader_parameter/Thresholdsmoothness = 11.47
+shader_parameter/Flares = 5
+shader_parameter/FlareSpacing = 0.12
+shader_parameter/FlareDistance = 0.325
+shader_parameter/LensThickness = 10.435
+shader_parameter/Intensity = 17.955
+shader_parameter/Saturation_ = 21.28
+shader_parameter/visibility = 2.0
+shader_parameter/MinFlareIntensity = 0.0
+shader_parameter/MaxFlareIntensity = 1.0
+shader_parameter/RainbowIntensity = 2.995
+
+[node name="player_rig" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.193063, -9.57355)
+
+[node name="animated texture robot" parent="." instance=ExtResource("1_3ehau")]
+transform = Transform3D(-0.247407, 0, 2.1629e-08, 0, 0.247407, 0, -2.1629e-08, 0, -0.247407, 0.135456, 0.28288, 9.48015)
+JUMP_ACCEL = 50.0
+QBOOST_EN = 250
+boost_friction = 2
+vertical_boost = 1
+qboost_friction = 2
+boost_multiplier_init = 3.0
+qboost_multiplier_init = 4.0
+
+[node name="ancla_player" type="Node3D" parent="animated texture robot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 5.68434e-14, 0, 1, 0, -5.68434e-14, 0, 1, -0.131663, 14.3743, 17.2371)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="animated texture robot"]
+layer = -1
+scale = Vector2(1.02, 1.02)
+transform = Transform2D(1.02, 0, 0, 1.02, 0, 0)
+
+[node name="radial_blur" type="ColorRect" parent="animated texture robot/CanvasLayer2"]
+material = SubResource("ShaderMaterial_i2hps")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="animated texture robot"]
+layer = -2
+
+[node name="radial_blur2" type="ColorRect" parent="animated texture robot/CanvasLayer3"]
+modulate = Color(1, 1, 1, 0.12549)
+material = SubResource("ShaderMaterial_4qfqw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Cam1" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(-0.999997, 0.000615594, 0.00240912, 0.000936569, 0.990764, 0.135592, -0.0023034, 0.135594, -0.990762, 0.123715, 3.86299, 3.48299)
+attributes = SubResource("CameraAttributesPractical_uatld")
+current = true
+fov = 70.0
+near = 0.215
+far = 396.18
+script = ExtResource("2_cy2ym")
+smooth = 17.075
+player = NodePath("../animated texture robot")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Cam1"]
+layer = -1
+
+[node name="lens_flare" type="ColorRect" parent="Cam1/CanvasLayer"]
+material = SubResource("ShaderMaterial_71oc6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

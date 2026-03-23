@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d0l7onsim3mx5"
+path.s3tc="res://.godot/imported/HUEVIADO DE ARMORED CORE v1_12317485ae2f15a-XA128.png-ff682918cb0b41ca316018bf3b82ca0c.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "caf745386e400992a3a467e5eb2c04e4"
+}
+
+[deps]
+
+source_file="res://Models/HUEVIADO DE ARMORED CORE v1_12317485ae2f15a-XA128.png"
+dest_files=["res://.godot/imported/HUEVIADO DE ARMORED CORE v1_12317485ae2f15a-XA128.png-ff682918cb0b41ca316018bf3b82ca0c.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

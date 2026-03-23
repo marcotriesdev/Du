@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dorsu4ti6rmu5"]
+
+[ext_resource type="PackedScene" uid="uid://cwxkxe8ra5xd5" path="res://Models/tank DU ARENA.blend" id="1_knpy0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0src"]
+albedo_color = Color(0.223103, 0.223103, 0.223103, 1)
+metallic = 0.61
+metallic_specular = 0.81
+roughness = 0.42
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m67vj"]
+disable_ambient_light = true
+albedo_color = Color(0.247059, 1, 0.435294, 1)
+emission_enabled = true
+emission = Color(0.509804, 1, 0.454902, 1)
+emission_energy_multiplier = 8.22
+subsurf_scatter_strength = 0.54
+subsurf_scatter_skin_mode = true
+backlight = Color(1, 1, 1, 1)
+disable_receive_shadows = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_77cht"]
+material = SubResource("StandardMaterial3D_m67vj")
+
+[node name="Arena" instance=ExtResource("1_knpy0")]
+
+[node name="ARENA_MESH" parent="." index="0"]
+transform = Transform3D(226.214, 0, 0, 0, 67.8641, 0, 0, 0, 226.214, -9.65805, 11.9329, -5.38327)
+surface_material_override/0 = SubResource("StandardMaterial3D_j0src")
+
+[node name="arena " parent="." index="1"]
+transform = Transform3D(226.214, 0, 0, 0, 67.8641, 0, 0, 0, 226.214, -9.71413, -0.426559, -5.096)
+mesh = null
+
+[node name="StaticBody3D" parent="arena " index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.180658, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1.99149, 0, 0, 0, 3.93155, 0, 0, 0, 1, -9.72573, 54.8861, -2.29833)
+mesh = SubResource("BoxMesh_77cht")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.73596)
+light_color = Color(0.584846, 1, 0.445972, 1)
+light_energy = 16.0

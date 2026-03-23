@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://d38eeelt7s53"]
+
+[ext_resource type="Script" path="res://cam_pose.gd" id="1_rehuq"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ws1o7"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_kud4g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yqdml"]
+
+[node name="Cam_pose" type="Node3D"]
+script = ExtResource("1_rehuq")
+
+[node name="Guide" type="Node3D" parent="."]
+
+[node name="ball" type="MeshInstance3D" parent="Guide"]
+mesh = SubResource("SphereMesh_ws1o7")
+skeleton = NodePath("../..")
+
+[node name="arrow" type="MeshInstance3D" parent="Guide"]
+transform = Transform3D(1.88623, -1.82524e-08, 0.417566, -1.88623, -1.82524e-08, 0.417566, 0, -0.590528, -2.58128e-08, 0, 0, -4.05479)
+mesh = SubResource("PrismMesh_kud4g")
+skeleton = NodePath("../..")
+
+[node name="arrow2" type="MeshInstance3D" parent="Guide"]
+transform = Transform3D(1.67027, 1.82524e-08, -0.417566, 1.67027, -1.82524e-08, 0.417566, 0, -0.590528, -2.58128e-08, 0, 0, -4.09569)
+mesh = SubResource("PrismMesh_kud4g")
+skeleton = NodePath("../..")
+
+[node name="arrow3" type="MeshInstance3D" parent="Guide"]
+transform = Transform3D(1.19024, -1.15176e-08, 0.263491, -1.19024, -1.15176e-08, 0.263491, 0, -0.372633, -1.62883e-08, 0, 0, -2.72849)
+mesh = SubResource("PrismMesh_kud4g")
+skeleton = NodePath("../..")
+
+[node name="arrow4" type="MeshInstance3D" parent="Guide"]
+transform = Transform3D(1.05397, 1.15176e-08, -0.263491, 1.05397, -1.15176e-08, 0.263491, 0, -0.372633, -1.62883e-08, 0, 0, -2.13839)
+mesh = SubResource("PrismMesh_kud4g")
+skeleton = NodePath("../..")
+
+[node name="shaft" type="MeshInstance3D" parent="Guide"]
+transform = Transform3D(0.152622, 0, 0, 0, 0.152622, 0, 0, 0, 4.85067, 0, 0, -2.41684)
+mesh = SubResource("BoxMesh_yqdml")
+skeleton = NodePath("../..")

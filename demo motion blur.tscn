@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbf8xuagc4syg"]
+
+[ext_resource type="PackedScene" uid="uid://cd7378fcusokl" path="res://motion-blur-godot-4.0-4e050b1dfcf3e83b841d28dec89aeb597fdee635/DemoScene.tscn" id="1_ksfsq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DemoScene" parent="." instance=ExtResource("1_ksfsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245419, 0.186287, 1.98564)
