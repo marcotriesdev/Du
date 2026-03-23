@@ -8,4 +8,6 @@ It currently has shaders for visual style (which I plan to refine). There's no c
 
 This project is not intended to be a mission based game that emulates the nature of Fromsoftware's Armored Core games. Currently the idea is open to generate any style of gameplay with the current mech movement controls. 
 
+![splash.png](./splash.jpg)
+
 #### For license information, please refer to the LICENSE file.
