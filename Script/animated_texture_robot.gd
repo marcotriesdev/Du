@@ -163,7 +163,7 @@ func _qboost(delta: float) -> void:
 		walk_accel = walk_accel_init
 
 func _damage_cheat(delta: float) -> void:
-	
+	#HACK
 	if Input.is_action_just_pressed("select"):
 		Global.player_ap -= 100
 	
