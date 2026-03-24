@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=4 uid="uid://d4nxgcpbsjfxl"]
 
-[ext_resource type="Material" uid="uid://dsb1wk5fxi835" path="res://Scenes/bodytexture.tres" id="1_f5205"]
-[ext_resource type="Script" path="res://Scenes/animated_texture_robot.gd" id="1_fxbw1"]
-[ext_resource type="Material" uid="uid://bpu5jx2unvvs5" path="res://Scenes/eye texture.tres" id="2_ik3mc"]
-[ext_resource type="PackedScene" uid="uid://bk8bib5lmohw" path="res://ac player Mesh.tscn" id="4_ak5re"]
+[ext_resource type="Material" uid="uid://dsb1wk5fxi835" path="res://Materials & Resources/bodytexture.tres" id="1_f5205"]
+[ext_resource type="Script" path="res://Script/animated_texture_robot.gd" id="1_fxbw1"]
+[ext_resource type="Material" uid="uid://bpu5jx2unvvs5" path="res://Materials & Resources/eye texture.tres" id="2_ik3mc"]
+[ext_resource type="PackedScene" uid="uid://bk8bib5lmohw" path="res://Scenes/ac player Mesh.tscn" id="4_ak5re"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6efi6"]
 resource_name = "Material"

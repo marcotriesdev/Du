@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dri2hn746a82m"]
 
 [ext_resource type="PackedScene" uid="uid://d4nxgcpbsjfxl" path="res://Scenes/animated texture robot.tscn" id="1_3ehau"]
-[ext_resource type="Script" path="res://Scenes/cam_1.gd" id="2_cy2ym"]
-[ext_resource type="Shader" path="res://radial_blur2.gdshader" id="2_erbgs"]
-[ext_resource type="Shader" uid="uid://cluur2lgv82je" path="res://lens_shader.tres" id="3_4w1mk"]
-[ext_resource type="Shader" path="res://radial_blur.gdshader" id="4_oe3sn"]
+[ext_resource type="Script" path="res://Script/cam_1.gd" id="2_cy2ym"]
+[ext_resource type="Shader" path="res://Shaders/radial_blur2.gdshader" id="2_erbgs"]
+[ext_resource type="Shader" uid="uid://cluur2lgv82je" path="res://Shaders/lens_shader.tres" id="3_4w1mk"]
+[ext_resource type="Shader" path="res://Shaders/radial_blur.gdshader" id="4_oe3sn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i2hps"]
 resource_local_to_scene = true

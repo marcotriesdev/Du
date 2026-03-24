@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://bxoq2i6sgqout"]
+[gd_scene load_steps=12 format=4 uid="uid://bh5admhg1ae67"]
 
-[ext_resource type="Material" uid="uid://dsb1wk5fxi835" path="res://Materials & Resources/bodytexture.tres" id="2_5q0ej"]
-[ext_resource type="Material" uid="uid://bpu5jx2unvvs5" path="res://Materials & Resources/eye texture.tres" id="3_5yocs"]
+[ext_resource type="Script" path="res://Script/animated_texture_robot.gd" id="1_nb6wv"]
+[ext_resource type="PackedScene" uid="uid://d3gi3qw8c763y" path="res://Scenes/Player Animated Mech 1.5.tscn" id="2_nkw6r"]
+[ext_resource type="Material" uid="uid://dsb1wk5fxi835" path="res://Materials & Resources/bodytexture.tres" id="2_wjwql"]
+[ext_resource type="Material" uid="uid://bpu5jx2unvvs5" path="res://Materials & Resources/eye texture.tres" id="3_empi0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6efi6"]
 resource_name = "Material"
@@ -82,22 +84,48 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uf304")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_n7bc5"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pbui2"]
+radius = 1.06053
+height = 4.71253
 
-[node name="animated texture robot" type="StaticBody3D"]
+[node name="Player Kinematic" type="CharacterBody3D" node_paths=PackedStringArray("MechAnimated")]
+script = ExtResource("1_nb6wv")
+MechAnimated = NodePath("MyMech1")
+BOOST_EN = 0
+BOOST_AIR_EN = 0
+
+[node name="MyMech1" parent="." instance=ExtResource("2_nkw6r")]
+transform = Transform3D(1, 3.82137e-15, 0, -3.82137e-15, 1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0)
 
 [node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.34577, 0, 0, 0, 2.34577, 0, 0, 0, 2.34577, 0, 4.76581, 0)
+transform = Transform3D(-2.34577, 0, 2.05074e-07, 0, 2.34577, 0, -2.05074e-07, 0, -2.34577, 0, 4.76581, 0)
+visible = false
 mesh = SubResource("ArrayMesh_ir7qw")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("2_5q0ej")
+surface_material_override/0 = ExtResource("2_wjwql")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.55858, 0, 0, 0, 4.71795, 0, 0, 0, 2.34577, 0, 1.83274, 0)
+transform = Transform3D(-4.55858, 0, 2.05074e-07, 0, 4.71795, 0, -3.98522e-07, 0, -2.34577, 0, 1.83274, 0)
+visible = false
 mesh = SubResource("ArrayMesh_kd5ql")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_5yocs")
+surface_material_override/0 = ExtResource("3_empi0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(5.17732, 0, 0, 0, 11.4646, 0, 0, 0, 6.57386, 0, 5.9449, 0)
-shape = SubResource("BoxShape3D_n7bc5")
+transform = Transform3D(-2.13542, 0, 1.86684e-07, 0, 2.13542, 0, -1.86684e-07, 0, -2.13542, 0, 4.92944, 0)
+shape = SubResource("CapsuleShape3D_pbui2")
+
+[node name="Node" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0112, 0)
+
+[node name="boost_reload" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+one_shot = true
+
+[node name="qboost_time" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="boost_reload" to="." method="_on_boost_reload_timeout"]
+[connection signal="timeout" from="qboost_time" to="." method="_on_qboost_time_timeout"]

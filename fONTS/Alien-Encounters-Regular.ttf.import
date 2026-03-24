@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dahj6201s8nk5"
-path="res://.godot/imported/Alien-Encounters-Regular.ttf-7978896be6e6e8bd7757b1c2552676e5.fontdata"
+path="res://.godot/imported/Alien-Encounters-Regular.ttf-3b787833347eefafcaefd97df6278359.fontdata"
 
 [deps]
 
-source_file="res://fONTS/Alien-Encounters-Regular.ttf"
-dest_files=["res://.godot/imported/Alien-Encounters-Regular.ttf-7978896be6e6e8bd7757b1c2552676e5.fontdata"]
+source_file="res://Fonts/Alien-Encounters-Regular.ttf"
+dest_files=["res://.godot/imported/Alien-Encounters-Regular.ttf-3b787833347eefafcaefd97df6278359.fontdata"]
 
 [params]
 

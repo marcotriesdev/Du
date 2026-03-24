@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d38eeelt7s53"]
 
-[ext_resource type="Script" path="res://cam_pose.gd" id="1_rehuq"]
+[ext_resource type="Script" path="res://Script/cam_pose.gd" id="1_rehuq"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ws1o7"]
 

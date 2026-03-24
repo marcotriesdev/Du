@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://cb7qssd0jjgje"]
 
-[ext_resource type="FontFile" uid="uid://dahj6201s8nk5" path="res://fONTS/Alien-Encounters-Regular.ttf" id="1_17pdw"]
-[ext_resource type="Script" path="res://Scenes/hud.gd" id="1_rieux"]
-[ext_resource type="FontFile" uid="uid://c6n1l1sesq1u5" path="res://fONTS/Alien-Encounters-Solid-Italic.ttf" id="3_7foak"]
-[ext_resource type="FontFile" uid="uid://kjtydicds4o7" path="res://fONTS/Alien-Encounters-Solid-Bold.ttf" id="4_8fq1k"]
-[ext_resource type="Script" path="res://Scenes/reloading.gd" id="5_fome6"]
-[ext_resource type="Script" path="res://Scenes/quickboosting.gd" id="5_ku66q"]
+[ext_resource type="FontFile" uid="uid://dahj6201s8nk5" path="res://Fonts/Alien-Encounters-Regular.ttf" id="1_17pdw"]
+[ext_resource type="Script" path="res://Script/hud.gd" id="1_rieux"]
+[ext_resource type="FontFile" uid="uid://c6n1l1sesq1u5" path="res://Fonts/Alien-Encounters-Solid-Italic.ttf" id="3_7foak"]
+[ext_resource type="FontFile" uid="uid://kjtydicds4o7" path="res://Fonts/Alien-Encounters-Solid-Bold.ttf" id="4_8fq1k"]
+[ext_resource type="Script" path="res://Script/reloading.gd" id="5_fome6"]
+[ext_resource type="Script" path="res://Script/quickboosting.gd" id="5_ku66q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0h3c2"]
 bg_color = Color(0.6, 1, 0, 0.847059)

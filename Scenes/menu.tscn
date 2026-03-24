@@ -1,14 +1,14 @@
 [gd_scene load_steps=15 format=3 uid="uid://sdjd86x0bxbi"]
 
 [ext_resource type="PackedScene" uid="uid://bxoq2i6sgqout" path="res://Scenes/animated texture robot_static.tscn" id="1_d4utu"]
-[ext_resource type="Script" path="res://current_id.gd" id="1_j0o15"]
-[ext_resource type="PackedScene" uid="uid://76ww4ubj4whv" path="res://camera_with_data.tscn" id="2_an5so"]
-[ext_resource type="PackedScene" uid="uid://d38eeelt7s53" path="res://cam_pose.tscn" id="3_rvq0r"]
-[ext_resource type="Theme" uid="uid://hs3fhkbwsew2" path="res://back_panel_theme.tres" id="4_e4yqk"]
-[ext_resource type="FontFile" uid="uid://c6n1l1sesq1u5" path="res://fONTS/Alien-Encounters-Solid-Italic.ttf" id="4_vunvx"]
-[ext_resource type="FontFile" uid="uid://bul0mvjh7w41x" path="res://fONTS/Alien-Encounters-Solid-Bold-Italic.ttf" id="6_qxyhi"]
-[ext_resource type="FontFile" uid="uid://dgdx2y75tp4eb" path="res://fONTS/Alien-Encounters-Solid-Regular.ttf" id="7_u8bsx"]
-[ext_resource type="Script" path="res://margin_container.gd" id="7_ueivs"]
+[ext_resource type="Script" path="res://Script/current_id.gd" id="1_j0o15"]
+[ext_resource type="PackedScene" uid="uid://76ww4ubj4whv" path="res://Scenes/camera_with_data.tscn" id="2_an5so"]
+[ext_resource type="PackedScene" uid="uid://d38eeelt7s53" path="res://Scenes/cam_pose.tscn" id="3_rvq0r"]
+[ext_resource type="Theme" uid="uid://hs3fhkbwsew2" path="res://Materials & Resources/back_panel_theme.tres" id="4_e4yqk"]
+[ext_resource type="FontFile" uid="uid://c6n1l1sesq1u5" path="res://Fonts/Alien-Encounters-Solid-Italic.ttf" id="4_vunvx"]
+[ext_resource type="FontFile" uid="uid://bul0mvjh7w41x" path="res://Fonts/Alien-Encounters-Solid-Bold-Italic.ttf" id="6_qxyhi"]
+[ext_resource type="FontFile" uid="uid://dgdx2y75tp4eb" path="res://Fonts/Alien-Encounters-Solid-Regular.ttf" id="7_u8bsx"]
+[ext_resource type="Script" path="res://Script/margin_container.gd" id="7_ueivs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y1xdi"]
 

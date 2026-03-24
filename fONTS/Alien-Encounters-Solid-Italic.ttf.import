@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c6n1l1sesq1u5"
-path="res://.godot/imported/Alien-Encounters-Solid-Italic.ttf-0018aabd16e46c20aa29c2b5eeec6ccb.fontdata"
+path="res://.godot/imported/Alien-Encounters-Solid-Italic.ttf-9c8e7f788392c4c6f7b892853f7b9fd3.fontdata"
 
 [deps]
 
-source_file="res://fONTS/Alien-Encounters-Solid-Italic.ttf"
-dest_files=["res://.godot/imported/Alien-Encounters-Solid-Italic.ttf-0018aabd16e46c20aa29c2b5eeec6ccb.fontdata"]
+source_file="res://Fonts/Alien-Encounters-Solid-Italic.ttf"
+dest_files=["res://.godot/imported/Alien-Encounters-Solid-Italic.ttf-9c8e7f788392c4c6f7b892853f7b9fd3.fontdata"]
 
 [params]
 

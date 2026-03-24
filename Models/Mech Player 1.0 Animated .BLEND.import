@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://i23mx3soqlqk"
-valid=false
+uid="uid://b572v7uupx0cm"
+path="res://.godot/imported/Mech Player 1.0 Animated .BLEND-2e1f2f6e326053cf0c4279a1e2f98267.scn"
 
 [deps]
 
-source_file="res://Models/HUEVIADO DE ARMORED CORE V1.0 .BLEND"
+source_file="res://Models/Mech Player 1.0 Animated .BLEND"
+dest_files=["res://.godot/imported/Mech Player 1.0 Animated .BLEND-2e1f2f6e326053cf0c4279a1e2f98267.scn"]
 
 [params]
 
@@ -30,14 +31,23 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Armature_001/Skeleton3D/Camera_001": {
+"import/skip_import": true
+},
+"PATH:Armature_001/Skeleton3D/Camera_001/Camera_001": {
+"import/skip_import": true
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
 blender/nodes/cameras=true
 blender/nodes/custom_properties=true
 blender/nodes/modifiers=1
-blender/meshes/colors=true
+blender/meshes/colors=false
 blender/meshes/uvs=true
 blender/meshes/normals=true
 blender/meshes/tangents=true

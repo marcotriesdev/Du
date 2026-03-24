@@ -1,27 +1,24 @@
-[gd_scene load_steps=35 format=3 uid="uid://blchp2nr2wwwd"]
+[gd_scene load_steps=29 format=3 uid="uid://blchp2nr2wwwd"]
 
 [ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="1_hd2ia"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="1_qto38"]
-[ext_resource type="Texture2D" uid="uid://tog3mfsfkygx" path="res://pcb_texture.png" id="1_tsqth"]
+[ext_resource type="Texture2D" uid="uid://tog3mfsfkygx" path="res://Graphics/pcb_texture.png" id="1_tsqth"]
 [ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="2_20ab7"]
-[ext_resource type="Texture2D" uid="uid://d18ilqqrp36tx" path="res://pcb_normals.png" id="2_j3lf7"]
+[ext_resource type="Texture2D" uid="uid://d18ilqqrp36tx" path="res://Graphics/pcb_normals.png" id="2_j3lf7"]
 [ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="3_5ce62"]
 [ext_resource type="PackedScene" uid="uid://cb7qssd0jjgje" path="res://Scenes/hud.tscn" id="3_cvsud"]
 [ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="4_ogys4"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="5_hn6m6"]
 [ext_resource type="PackedScene" uid="uid://bo7qgxnv782m1" path="res://Models/tank DU.tscn" id="6_dbdal"]
 [ext_resource type="Resource" uid="uid://cp5pmuoa15e5g" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_blur_stage.tres" id="6_gqod8"]
-[ext_resource type="PackedScene" uid="uid://dorsu4ti6rmu5" path="res://arena01.tscn" id="7_dwlux"]
+[ext_resource type="PackedScene" uid="uid://dorsu4ti6rmu5" path="res://Scenes/arena01.tscn" id="7_dwlux"]
 [ext_resource type="Resource" uid="uid://bk8tn7n5k0b1r" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_neighbor_max_stage.tres" id="7_ova8i"]
 [ext_resource type="Resource" uid="uid://chg1vh0sap86j" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_overlay_stage.tres" id="8_hbeal"]
 [ext_resource type="Script" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_motion_blur.gd" id="9_a2vts"]
 [ext_resource type="Resource" uid="uid://kgrk5sdoor7t" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_tile_max_x_stage.tres" id="10_80vuh"]
 [ext_resource type="Resource" uid="uid://d2rdmkpi41wf1" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_tile_max_y_stage.tres" id="11_3t5b1"]
 [ext_resource type="Resource" uid="uid://d1ckx52l74p0" path="res://addons/SphynxMotionBlurToolkit/McGuire/mcguire_tile_variance_stage.tres" id="12_8q06w"]
-[ext_resource type="PackedScene" uid="uid://dri2hn746a82m" path="res://player_rig.tscn" id="14_hb01k"]
-[ext_resource type="Shader" path="res://radial_blur2.gdshader" id="15_y2ohr"]
-[ext_resource type="Shader" uid="uid://cluur2lgv82je" path="res://lens_shader.tres" id="16_dsoe0"]
-[ext_resource type="Shader" path="res://radial_blur.gdshader" id="16_scy8a"]
+[ext_resource type="PackedScene" uid="uid://bxcdtu4n6kdiw" path="res://Scenes/player_rig 1.0.tscn" id="19_3kcap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3651x"]
 
@@ -113,39 +110,6 @@ framerate_independent = true
 uncapped_independence = true
 target_constant_framerate = 70.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjjrt"]
-resource_local_to_scene = true
-shader = ExtResource("16_scy8a")
-shader_parameter/intensity = 0.9
-shader_parameter/falloff = 0.5
-shader_parameter/samples = 11
-shader_parameter/center = Vector2(2.215, 2.775)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssmsa"]
-resource_local_to_scene = true
-shader = ExtResource("15_y2ohr")
-shader_parameter/intensity = 1.0
-shader_parameter/falloff = 0.7
-shader_parameter/samples = 4
-shader_parameter/center = Vector2(0.5, 0.5)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8ict"]
-resource_local_to_scene = true
-shader = ExtResource("16_dsoe0")
-shader_parameter/Blur = 3.33
-shader_parameter/FlareThreshold = 12.39
-shader_parameter/Thresholdsmoothness = 11.47
-shader_parameter/Flares = 5
-shader_parameter/FlareSpacing = 0.12
-shader_parameter/FlareDistance = 0.325
-shader_parameter/LensThickness = 10.435
-shader_parameter/Intensity = 17.955
-shader_parameter/Saturation_ = 21.28
-shader_parameter/visibility = 2.0
-shader_parameter/MinFlareIntensity = 0.0
-shader_parameter/MaxFlareIntensity = 1.0
-shader_parameter/RainbowIntensity = 2.995
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_f8kjy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynh6s"]
@@ -170,17 +134,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 28.
 shadow_enabled = true
 shadow_opacity = 0.64
 sky_mode = 1
-
-[node name="player_rig" parent="." instance=ExtResource("14_hb01k")]
-
-[node name="radial_blur" parent="player_rig/animated texture robot/CanvasLayer2" index="0"]
-material = SubResource("ShaderMaterial_jjjrt")
-
-[node name="radial_blur2" parent="player_rig/animated texture robot/CanvasLayer3" index="0"]
-material = SubResource("ShaderMaterial_ssmsa")
-
-[node name="lens_flare" parent="player_rig/Cam1/CanvasLayer" index="0"]
-material = SubResource("ShaderMaterial_w8ict")
 
 [node name="HUD" parent="." instance=ExtResource("3_cvsud")]
 position = Vector2(0, 1)
@@ -254,5 +207,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ynh6s")
 transform = Transform3D(105.295, 0, 0, 0, 1, 0, 0, 0, 107.137, 0, -1, 0)
 shape = SubResource("ConvexPolygonShape3D_01r8p")
 
-[editable path="player_rig"]
+[node name="player_rig" parent="." instance=ExtResource("19_3kcap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38795, -12.7608, 23.7122)
+
 [editable path="Arena"]

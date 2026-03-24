@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxcdtu4n6kdiw"]
+
+[ext_resource type="Shader" path="res://Shaders/radial_blur.gdshader" id="2_q5n5w"]
+[ext_resource type="Shader" path="res://Shaders/radial_blur2.gdshader" id="3_o41dv"]
+[ext_resource type="PackedScene" uid="uid://bh5admhg1ae67" path="res://Scenes/Player Kinematic 1.0.tscn" id="3_tb1tm"]
+[ext_resource type="Script" path="res://Script/cam_1.gd" id="4_440vx"]
+[ext_resource type="Shader" uid="uid://cluur2lgv82je" path="res://Shaders/lens_shader.tres" id="5_nef02"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uatld"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 65.59
+dof_blur_far_transition = 220.61
+dof_blur_near_enabled = true
+dof_blur_near_distance = 2.86
+dof_blur_amount = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_71oc6"]
+resource_local_to_scene = true
+shader = ExtResource("5_nef02")
+shader_parameter/Blur = 3.33
+shader_parameter/FlareThreshold = 12.39
+shader_parameter/Thresholdsmoothness = 11.47
+shader_parameter/Flares = 5
+shader_parameter/FlareSpacing = 0.12
+shader_parameter/FlareDistance = 0.325
+shader_parameter/LensThickness = 10.435
+shader_parameter/Intensity = 17.955
+shader_parameter/Saturation_ = 21.28
+shader_parameter/visibility = 2.0
+shader_parameter/MinFlareIntensity = 0.0
+shader_parameter/MaxFlareIntensity = 1.0
+shader_parameter/RainbowIntensity = 2.995
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i2hps"]
+resource_local_to_scene = true
+shader = ExtResource("2_q5n5w")
+shader_parameter/intensity = 0.9
+shader_parameter/falloff = 1.0
+shader_parameter/samples = 1
+shader_parameter/center = Vector2(21.1, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qfqw"]
+resource_local_to_scene = true
+shader = ExtResource("3_o41dv")
+shader_parameter/intensity = 1.0
+shader_parameter/falloff = 0.7
+shader_parameter/samples = 4
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[node name="player_rig" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.193063, -9.57355)
+
+[node name="Cam1" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(-0.999997, 0.000615594, 0.00240912, 0.000936569, 0.990764, 0.135592, -0.0023034, 0.135594, -0.990762, 0.123715, 8.1115, 0.234134)
+attributes = SubResource("CameraAttributesPractical_uatld")
+current = true
+fov = 70.0
+near = 0.215
+far = 396.18
+script = ExtResource("4_440vx")
+smooth = 17.075
+player = NodePath("../Player Kinematic")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Cam1"]
+layer = -1
+
+[node name="lens_flare" type="ColorRect" parent="Cam1/CanvasLayer"]
+material = SubResource("ShaderMaterial_71oc6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Player Kinematic" parent="." instance=ExtResource("3_tb1tm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 10.3117)
+
+[node name="ancla_player" type="Node3D" parent="Player Kinematic"]
+unique_name_in_owner = true
+transform = Transform3D(-0.494814, 0, 4.3258e-08, 0, 0.494814, 0, -4.3258e-08, 0, -0.494814, 0.336061, 7.67837, -10.1923)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Player Kinematic"]
+layer = -1
+scale = Vector2(1.02, 1.02)
+transform = Transform2D(1.02, 0, 0, 1.02, 0, 0)
+
+[node name="radial_blur" type="ColorRect" parent="Player Kinematic/CanvasLayer2"]
+material = SubResource("ShaderMaterial_i2hps")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="Player Kinematic"]
+layer = -2
+
+[node name="radial_blur2" type="ColorRect" parent="Player Kinematic/CanvasLayer3"]
+modulate = Color(1, 1, 1, 0.12549)
+material = SubResource("ShaderMaterial_4qfqw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

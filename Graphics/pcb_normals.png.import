@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d18ilqqrp36tx"
-path.s3tc="res://.godot/imported/pcb_normals.png-129b27376f569a0413fcccdb71b18ce8.s3tc.ctex"
+path.s3tc="res://.godot/imported/pcb_normals.png-3d36b2ba2b6861162763711d7ac3ba90.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://pcb_normals.png"
-dest_files=["res://.godot/imported/pcb_normals.png-129b27376f569a0413fcccdb71b18ce8.s3tc.ctex"]
+source_file="res://Graphics/pcb_normals.png"
+dest_files=["res://.godot/imported/pcb_normals.png-3d36b2ba2b6861162763711d7ac3ba90.s3tc.ctex"]
 
 [params]
 

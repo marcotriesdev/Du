@@ -13,11 +13,12 @@ config_version=5
 config/name="Du"
 run/main_scene="res://Scenes/world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://du_icon.png"
+boot_splash/image="res://splash.jpg"
+config/icon="res://Graphics/du_icon.png"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://Script/global.gd"
 
 [display]
 
@@ -29,6 +30,15 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg", "res://addons/instant-realistic-light/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Models/": "orange",
+"res://Scenes/": "green",
+"res://Script/": "green",
+"res://addons/": "pink"
+}
 
 [input]
 

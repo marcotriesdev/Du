@@ -4,8 +4,8 @@ extends CharacterBody3D
 @onready var qb_timer = $qboost_time
 @onready var blur = $CanvasLayer2/radial_blur
 @onready var blur2 = $CanvasLayer3/radial_blur2
-@onready var AC = $AC
-@onready var gymbal : Node3D = AC.gymbal
+@export var MechAnimated : Node3D 
+@onready var gymbal : Node3D = MechAnimated.gymbal
 
 
 var b_reload : bool = true
@@ -37,7 +37,7 @@ var init_friction = friction
 
 @export var boost_acceleration := 50
 @export var boost_friction := 100
-@export var vertical_boost := 10
+var vertical_boost := 25
 var vertical_boost_init = vertical_boost
 
 @export var qboost_acceleration := 500
@@ -58,6 +58,10 @@ var radial_blur_i := ZERO
 var max_blur := 0.5
 var blur_delta := 0.2
 var blur_displacement_intensity := 1
+
+func _ready() -> void:
+	
+	print("NOMBRE DE MESH, script de player: ", MechAnimated.gymbal)
 
 func _look(delta: float) -> void:
 	
@@ -126,8 +130,9 @@ func _boost(delta: float) -> void:
 
 		if Global.player_en > 0:
 			if not is_on_floor():
-				velocity.y += vertical_boost				
-			Global.player_en -= BOOST_EN + BOOST_AIR_EN
+				velocity.y = vertical_boost
+				Global.player_en -= BOOST_AIR_EN
+			Global.player_en -= BOOST_EN 
 			boost_multiplier = move_toward(boost_multiplier,boost_multiplier_init,boost_acceleration*delta)
 		else:
 			boost_multiplier = move_toward(boost_multiplier,ONE,boost_friction*delta)
