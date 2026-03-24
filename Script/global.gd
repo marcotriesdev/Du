@@ -1,6 +1,6 @@
 extends Node
 
-var gravity_multiplier := 5.2
+var gravity_multiplier := 8.2
 
 var player_ap_max = 5000.00
 var player_ap = player_ap_max

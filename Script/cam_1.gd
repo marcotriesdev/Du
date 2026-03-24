@@ -8,12 +8,12 @@ extends Camera3D
 
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta: float) -> void:
 	
 	
@@ -34,7 +34,6 @@ func gymbal_follow(delta: float)-> void:
 	global_transform.origin = global_transform.origin.lerp(player.gymbal.global_position, delta * smooth )
 
 
-	#otra medicina, before headake nausea, prevent gedeke
 func ancla_follow(delta: float) -> void:
 	
 	#global_transform.origin = global_transform.origin.lerp(%ancla_player.global_transform.origin, delta * smooth ) 

@@ -71,8 +71,7 @@ func _look(delta: float) -> void:
 		"view_up",
 		"view_down"
 	)
-	# Giro horizontal (Player)
-
+	# Horizontal turn;
 	rotation.y -= look_input.x * mouse_sens * delta 
 
 func _gravity(delta: float) -> void:
@@ -129,8 +128,9 @@ func _boost(delta: float) -> void:
 	if Input.is_action_pressed("boost"):
 
 		if Global.player_en > 0:
-			if not is_on_floor():
-				velocity.y = vertical_boost
+			if not is_on_floor():		
+			
+				velocity.y += vertical_boost*0.1 #had to tone down vertical boost
 				Global.player_en -= BOOST_AIR_EN
 			Global.player_en -= BOOST_EN 
 			boost_multiplier = move_toward(boost_multiplier,boost_multiplier_init,boost_acceleration*delta)
@@ -200,11 +200,13 @@ func _process(delta: float) -> void:
 func _on_boost_reload_timeout() -> void:
 	b_reload = true
 	Global.depleted_en = false
-
-
 func _on_qboost_time_timeout() -> void:
 	qb_active = false
 	qboost_multiplier = 1.0
+
+
+
+#Here I included the radial blur effect control when the player goes quickboosting
 
 func _sin_gen() -> float:
 	
@@ -215,7 +217,6 @@ func _sin_gen() -> float:
 	else:
 		SINE = ZERO
 	
-	#print("SIN ",cos(SINE) * (blur_displacement_intensity * sign))
 	value = sin(SINE) * (blur_displacement_intensity * sign)
 	return clampf(value,-0.5,0.5)
 
@@ -227,7 +228,6 @@ func _cos_gen() -> float:
 	else:
 		COSINE = ZERO
 	
-	#print("COS ",cos(COSINE) * (blur_displacement_intensity * sign))
 	value = cos(COSINE) * (blur_displacement_intensity * sign)
 	
 	return clampf(value,-0.5,0.5)
