@@ -11,12 +11,16 @@ This project is not intended to be a mission based game that emulates the nature
 
 Currently there are only player controls tested with an Xinput joystick. Future adaptation for keyboard and mouse is a priority. The controls play much like AC gen 4: dual analog sticks for movement and view, left trigger for boosting, right trigger for quickboosting, "A" button for jumping (unlike Armored Core). Dual wielding with L and R shoulder buttons is pending. No pause menu or map has been implemented.
 
-![screenshot1.jpg](./screenshot1.jpg)
-*Current pov of the game*
+*Current pov of the game:*
+
+![screenshot1.jpg](./Graphics/screenshot1.JPG)
+
+
+*Quick Blender screenshot for mech scale:*
 
 ![splash.png](./splash.jpg)
 
-*Quick Blender screenshot for mech scale*
+
 
 
 
